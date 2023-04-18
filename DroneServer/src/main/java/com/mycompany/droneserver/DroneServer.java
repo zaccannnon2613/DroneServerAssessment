@@ -16,7 +16,7 @@ public class DroneServer {
     public static void main(String[] args) {
 
         try {
-            int serverPort = 7896;
+            int serverPort = 4444;
             ServerSocket listenSocket = new ServerSocket(serverPort);
             while (true) {
                 Socket clientSocket = listenSocket.accept();
@@ -47,6 +47,9 @@ class Connection extends Thread {
           }
       }
      public void run(){
+         DisplayUserInterface displauUI = new DisplayUserInterface();
+         displauUI.display();
+         
         try { // an echo server
            String data = in.readUTF();
          // System.out.println(data);
