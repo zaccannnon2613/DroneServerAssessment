@@ -18,7 +18,7 @@ public class DroneClient {
         String message = "Hello";
         
         try{
-            int serverPort = 7896;
+            int serverPort = 4444;
             
             s = new Socket(hostName, serverPort);
             
