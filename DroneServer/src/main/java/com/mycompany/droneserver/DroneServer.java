@@ -47,8 +47,8 @@ class Connection extends Thread {
           }
       }
      public void run(){
-         DisplayUserInterface displauUI = new DisplayUserInterface();
-         displauUI.display();
+         NewJFrame mainGui = new NewJFrame();
+         mainGui.mainFrame();
          
         try { // an echo server
            String data = in.readUTF();
