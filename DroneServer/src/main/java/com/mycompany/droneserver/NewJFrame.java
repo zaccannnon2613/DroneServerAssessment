@@ -1,15 +1,24 @@
 package com.mycompany.droneserver;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Zac
  */
 public class NewJFrame extends javax.swing.JFrame {
+
+    LinkedList<Drone> droneList = new LinkedList<Drone>();
+    LinkedList<Fire> fireList = new LinkedList<Fire>();
 
     /**
      * Creates new form NewJFrame
@@ -229,52 +238,79 @@ public class NewJFrame extends javax.swing.JFrame {
 
     //Display map
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // display current information about the map
+        //read data from file, output to map
     }//GEN-LAST:event_jButton2ActionPerformed
 
     //instruct drone
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // send messages to drone, drone must send acknowledgement
     }//GEN-LAST:event_jButton3ActionPerformed
 
     //Load Data
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // load data from csv file and binary files
+        // fire.xlsv and drone binary file
+        File inFile = new File("fires.xlsx");
+        String fireContent;
+        try {
+            Scanner read = new Scanner(inFile);
+            //save scanner results into fire array
+            while (read.hasNextLine()) {
+                fireContent = read.nextLine();
+
+            }
+            read.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     //recieve drone details
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // receive drone details from client side
     }//GEN-LAST:event_jButton4ActionPerformed
 
     //save drone details
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        // save drone details to binary file that cannot be overridden
+
+        //create the binary file
+        try {
+            FileOutputStream fileOut = new FileOutputStream("drone.dat");
+            DataOutputStream dataOut = new DataOutputStream(fileOut);
+            
+            
+        }catch(FileNotFoundException ex){
+            ex.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     //display drone on map
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        // display position of registered drone on map
     }//GEN-LAST:event_jButton5ActionPerformed
 
     //delete fire
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        // delete fire once fire is taken care of
     }//GEN-LAST:event_jButton7ActionPerformed
 
     //recall drones
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        // recall all drones to base
     }//GEN-LAST:event_jButton8ActionPerformed
 
     //move drone
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+        // move a drone to a new position manually
     }//GEN-LAST:event_jButton9ActionPerformed
 
     //shut down
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        // shut down the server and recall all drones
     }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
