@@ -10,6 +10,7 @@ package com.mycompany.droneserver;
  */
 import java.net.*;
 import java.io.*;
+import java.util.LinkedList;
 
 public class DroneServer {
 
@@ -47,8 +48,11 @@ class Connection extends Thread {
           }
       }
      public void run(){
+         LinkedList<Drone> droneList = new LinkedList<Drone>();
+         LinkedList<Fire> fireList = new LinkedList<Fire>();
          NewJFrame mainGui = new NewJFrame();
          mainGui.mainFrame();
+         
          
         try { // an echo server
            String data = in.readUTF();
